@@ -1,0 +1,25 @@
+# App Name
+app = "my-calcom-app"
+
+# Define the build process
+[build]
+  dockerfile = "Dockerfile"
+
+# Configure the HTTP service
+[[services]]
+  internal_port = 3000
+  protocol = "tcp"
+
+  # Define HTTP ports
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+# Environment Variables
+[env]
+  NEXTAUTH_URL = "https://my-calcom-app.fly.dev"
+  NEXT_PUBLIC_WEBAPP_URL = "https://my-calcom-app.fly.dev"
